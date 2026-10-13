@@ -7,13 +7,21 @@ if (isset($_GET['lenght'])) {
 
     $lenght = $_GET['lenght'];
 
-    $uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    $lowercase = "abcdefghijklmnopqrstuvwxyz";
+    $letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     $numbers = "0123456789";
     $symbols = "!@#$%^&*()";
 
-    $all = $uppercase . $lowercase . $numbers . $symbols;
+    $all = "";
 
+    if (isset($_GET['letters']) && $_GET['letters'] == "on") {
+        $all .= $letters;
+    }
+    if (isset($_GET['numbers']) && $_GET['numbers'] == "on") {
+        $all .= $numbers;
+    }
+    if (isset($_GET['symbols']) && $_GET['symbols'] == "on") {
+        $all .= $symbols;
+    }
 
 
     for ($i = 0; $i < $lenght; $i++) {

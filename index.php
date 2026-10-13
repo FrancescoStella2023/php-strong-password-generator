@@ -1,7 +1,7 @@
 <?php
 require_once "./functions.php";
 
-if ($password != "") {
+if (isset($_GET['password']) && $password != "") {
 
     session_start();
 
@@ -36,8 +36,23 @@ if ($password != "") {
 
         </div>
         <div class="d-flex gap-2 justify-content-center m-4">
-            <input type="radio" name="repetition" id="repetition">
-            <label class="form-label" for="lenght">consenti la ripetizione dei caratteri</label>
+            <select type="radio" name="repetition" id="repetition">
+                <option value="0">no</option>
+                <option value="1">Si</option>
+            </select>
+            <label class="form-label" for="lenght">Consenti la ripetizione dei caratteri</label>
+        </div>
+        <div class="d-flex gap-2 justify-content-center m-4">
+            <input type="checkbox" name="letters" id="letters">
+            <label class="form-label" for="letters">Lettere</label>
+        </div>
+        <div class="d-flex gap-2 justify-content-center m-4">
+            <input type="checkbox" name="numbers" id="numbers">
+            <label class="form-label" for="numbers">Numeri</label>
+        </div>
+        <div class="d-flex gap-2 justify-content-center m-4">
+            <input type="checkbox" name="symbols" id="symbols">
+            <label class="form-label" for="symbols">Simboli</label>
         </div>
         <div class="d-flex justify-content-center m-4">
             <button type="submit" class="btn btn-primary">Genera password</button>
