@@ -2,11 +2,26 @@
 
 if (isset($_GET['lenght'])) {
 
-    $data = $_GET['lenght'];
+    $lenght = $_GET['lenght'];
 
-    echo "$data";
+    $uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    $lowercase = "abcdefghijklmnopqrstuvwxyz";
+    $numbers = "0123456789";
+    $symbols = "!@#$%^&*()";
+
+    $all = $uppercase . $lowercase . $numbers . $symbols;
 
 
+    $password = "";
+
+    for ($i = 0; $i < $lenght; $i++) {
+        $randomPos = rand(0, strlen($all));
+        $randomChar = substr($all, $randomPos, 1);
+        $password .= $randomChar;
+    }
+
+
+    echo "$password";
 }
 
 
@@ -29,11 +44,15 @@ if (isset($_GET['lenght'])) {
         <h1 class="display-4 fw-bold">Generatore di password</h1>
     </header>
 
-    <form action="GET">
+    <form action="">
         <div class="d-flex gap-4 justify-content-center m-4">
             <input type="number" min="5" max="20" name="lenght" id="lenght">
             <label for="lenght">Lunghezza</label>
 
+        </div>
+        <div class="d-flex gap-2 justify-content-center m-4">
+            <input type="radio" name="repetition" id="repetition">
+            <label for="lenght">consenti la ripetizione dei caratteri</label>
         </div>
         <div class="d-flex justify-content-center m-4">
             <button>Genera password</button>
