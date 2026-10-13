@@ -1,5 +1,8 @@
 <?php
 
+$password = "";
+$lenght = "";
+
 if (isset($_GET['lenght'])) {
 
     $lenght = $_GET['lenght'];
@@ -12,7 +15,6 @@ if (isset($_GET['lenght'])) {
     $all = $uppercase . $lowercase . $numbers . $symbols;
 
 
-    $password = "";
 
     for ($i = 0; $i < $lenght; $i++) {
         $randomPos = rand(0, strlen($all));
