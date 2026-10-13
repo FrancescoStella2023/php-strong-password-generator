@@ -1,31 +1,8 @@
 <?php
 
-if (isset($_GET['lenght'])) {
+require_once "./functions.php"
 
-    $lenght = $_GET['lenght'];
-
-    $uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    $lowercase = "abcdefghijklmnopqrstuvwxyz";
-    $numbers = "0123456789";
-    $symbols = "!@#$%^&*()";
-
-    $all = $uppercase . $lowercase . $numbers . $symbols;
-
-
-    $password = "";
-
-    for ($i = 0; $i < $lenght; $i++) {
-        $randomPos = rand(0, strlen($all));
-        $randomChar = substr($all, $randomPos, 1);
-        $password .= $randomChar;
-    }
-
-
-    echo "$password";
-}
-
-
-?>
+    ?>
 
 
 <!DOCTYPE html>
@@ -46,7 +23,8 @@ if (isset($_GET['lenght'])) {
 
     <form action="">
         <div class="d-flex gap-4 justify-content-center m-4">
-            <input type="number" min="5" max="20" name="lenght" id="lenght">
+            <input type="number" min="5" max="20" name="lenght" id="lenght"
+                value="<?php echo isset($lenght) && $lenght != "" ? "$lenght" : 5 ?>">
             <label for="lenght">Lunghezza</label>
 
         </div>
@@ -58,6 +36,14 @@ if (isset($_GET['lenght'])) {
             <button>Genera password</button>
         </div>
     </form>
+
+    <?php
+    if (isset($password) && $password != "") {
+        ?>
+        <div class="d-flex justify-content-center m-4">
+            <p>La tua nuova password è <?= $password ?></p>
+        </div>
+    <?php } ?>
 
 </body>
 
